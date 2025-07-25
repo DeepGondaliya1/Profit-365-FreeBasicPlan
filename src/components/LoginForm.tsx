@@ -6,7 +6,11 @@ import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
-export default function LoginForm() {
+interface LoginFormProps {
+  setSuccessPreferences: (preferences: string[]) => void;
+}
+
+export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
@@ -37,6 +41,7 @@ export default function LoginForm() {
     e.preventDefault();
     setError(null);
     setLoading(true);
+    setSuccessPreferences([]);
 
     // Validate required fields
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.whatsappNumber) {
@@ -48,6 +53,12 @@ export default function LoginForm() {
     // Validate preferences
     if (formData.preferences.length === 0) {
       setError('Please select at least one contact method.');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.preferences.includes('telegram') && !formData.telegramId) {
+      setError('Telegram ID is required when Telegram is selected.');
       setLoading(false);
       return;
     }
@@ -75,17 +86,9 @@ export default function LoginForm() {
         channelPreference,
         telegramId: channelPreference !== 'whatsapp' ? formData.telegramId : '',
       });
-    //   console.log('Response:', response.data);
+
       if (response.data.message === 'Free subscription created successfully') {
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          whatsappNumber: '',
-          preferences: [],
-          telegramId: '',
-        });
-        // router.push('/login?success=free-signup');
+        setSuccessPreferences(formData.preferences); // Store preferences for success message
       } else {
         setError('Failed to create subscription. Please try again.');
       }
@@ -212,7 +215,7 @@ export default function LoginForm() {
           {formData.preferences.includes('telegram') && (
             <div>
               <label htmlFor="telegramId" className="block text-sm font-medium text-gray-300">
-                Telegram ID (Optional)
+                Telegram ID
               </label>
               <input
                 id="telegramId"
@@ -222,7 +225,19 @@ export default function LoginForm() {
                 placeholder="@youruserId"
                 value={formData.telegramId}
                 onChange={handleChange}
+                required
               />
+              <p className="mt-1 text-sm text-gray-400">
+                Need help finding your Telegram ID?{' '}
+                <a
+                  href="https://medium.com/block-bastards/how-to-find-your-user-id-on-telegram-a27cb7b732d6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-500 hover:underline"
+                >
+                  Learn how
+                </a>
+              </p>
             </div>
           )}
         </div>
