@@ -12,14 +12,14 @@ interface LoginFormProps {
 
 export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+  const initialFormData = {
+    preferredName: '',
     email: '',
     whatsappNumber: '',
     preferences: [] as string[],
     telegramId: '',
-  });
+  };
+  const [formData, setFormData] = useState(initialFormData);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -44,7 +44,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
     setSuccessPreferences([]);
 
     // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.whatsappNumber) {
+    if (!formData.email || !formData.whatsappNumber) {
       setError('Please fill in all required fields.');
       setLoading(false);
       return;
@@ -79,8 +79,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
 
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscriptions/free-plan-signup`, {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
+        preferredName: formData.preferredName,
         email: formData.email,
         phoneNumber: formData.whatsappNumber,
         channelPreference,
@@ -89,6 +88,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
 
       if (response.data.message === 'Free subscription created successfully') {
         setSuccessPreferences(formData.preferences); // Store preferences for success message
+        setFormData(initialFormData); // Reset form data
       } else {
         setError('Failed to create subscription. Please try again.');
       }
@@ -122,32 +122,16 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
       <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-4">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-300">
-              First Name
+            <label htmlFor="preferredName" className="block text-sm font-medium text-gray-300">
+              Preferred Name (Optional)
             </label>
             <input
-              id="firstName"
-              name="firstName"
+              id="preferredName"
+              name="preferredName"
               type="text"
-              required
               className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Enter your first name"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-gray-300">
-              Last Name
-            </label>
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              required
-              className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Enter your last name"
-              value={formData.lastName}
+              placeholder="Enter your preferred name"
+              value={formData.preferredName}
               onChange={handleChange}
             />
           </div>
