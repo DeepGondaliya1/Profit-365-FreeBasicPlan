@@ -12,7 +12,9 @@ import "react-phone-input-2/lib/style.css";
 interface LoginFormProps {
   setSuccessPreferences: (preferences: string[]) => void;
 }
-
+interface mailSuggestion {
+  full: string;
+}
 export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   const customPhoneStyles = `
       .react-tel-input {
@@ -144,7 +146,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
         email: formData.email,
         domains: popularEmailDomains,
         topLevelDomains: popularTopLevelDomains,
-        suggested: (suggestion: any) => {
+        suggested: (suggestion: mailSuggestion) => {
           resolve(suggestion.full);
         },
         empty: () => {
@@ -349,15 +351,17 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 WhatsApp Number
               </label>
               <PhoneInput
-                id="whatsappNumber"
-                name="whatsappNumber"
-                type="tel"
-                required
                 placeholder="Enter your WhatsApp number"
                 value={formData.whatsappNumber}
                 onChange={handlePhoneChange}
                 enableSearch={true}
                 country="in"
+                inputProps={{
+                  name: "whatsappNumber",
+                  id: "whatsappNumber", // Applies to internal <input>
+                  required: true,
+                  autoComplete: "tel",
+                }}
               />
             </div>
             <div>
