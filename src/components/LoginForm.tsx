@@ -277,8 +277,8 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           <Image
             src="/Profit-365-logo.png"
             alt="Logo"
-            width={80}
-            height={70}
+            width={100}
+            height={100}
             className="object-contain"
           />
         </div>
