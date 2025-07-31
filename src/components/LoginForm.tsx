@@ -286,8 +286,8 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           Join Our Community
         </h2>
         <p className="text-center text-sm text-gray-400">
-          Sign up for our Monthly Basic plan to receive free trading signals via
-          WhatsApp or Telegram
+          Sign up for our FREE private broadcast to get free trading insights
+          via WhatsApp or Telegram
         </p>
         {error && (
           <div className="text-red-500 text-sm text-center">{error}</div>
@@ -355,7 +355,8 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 value={formData.whatsappNumber}
                 onChange={handlePhoneChange}
                 enableSearch={true}
-                country="in"
+                countryCodeEditable={false}
+                country="us"
                 inputProps={{
                   name: "whatsappNumber",
                   id: "whatsappNumber", // Applies to internal <input>
