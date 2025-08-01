@@ -166,9 +166,10 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   };
 
   const handlePhoneChange = (value: string) => {
+    const formattedNumber = value.startsWith("+") ? value : `+${value}`;
     setFormData((prev) => ({
       ...prev,
-      whatsappNumber: value,
+      whatsappNumber: formattedNumber,
     }));
   };
 
