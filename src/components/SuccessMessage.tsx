@@ -39,7 +39,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ preferences }) => {
             <ol className="text-center">
               <li>download the contact.vcf file</li>
               <li>import the contact to your Phone contact </li>
-              <li>(contact name: P365Education). </li>
+              <li>(contact name: P365 Stocks & Crypto). </li>
             </ol>
           </p>
           <button

@@ -287,7 +287,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           Join Our Community
         </h2>
         <p className="text-center text-sm text-gray-400">
-          Sign up for our FREE private broadcast to get free trading insights
+          Sign up for our FREE private broadcast to get free trading Signals
           via WhatsApp or Telegram
         </p>
         {error && (

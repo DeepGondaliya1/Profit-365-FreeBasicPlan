@@ -18,7 +18,7 @@ export default function Home() {
   }, [successPreferences]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 gap-3">
+    <div className="min-h-screen bg-[#030303] flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 gap-3">
       <div className="w-full max-w-md">
         <LoginForm setSuccessPreferences={setSuccessPreferences} />
       </div>
