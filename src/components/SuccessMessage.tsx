@@ -17,7 +17,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ preferences }) => {
   };
 
   return (
-    <div className="max-w-md w-full bg-gray-800 bg-opacity-80 backdrop-blur-lg p-6 rounded-xl shadow-2xl">
+    <div className="max-w-md w-full bg-[#1e1e1e] bg-opacity-80 backdrop-blur-lg p-6 rounded-xl shadow-2xl">
       <h2 className="text-center text-2xl font-bold text-green-400 mb-6">
         Registration Successful!
       </h2>
@@ -39,7 +39,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ preferences }) => {
             <ol className="text-center">
               <li>download the contact.vcf file</li>
               <li>import the contact to your Phone contact </li>
-              <li>(contact name: P365Education). </li>
+              <li>(contact name: P365 Stocks & Crypto). </li>
             </ol>
           </p>
           <button

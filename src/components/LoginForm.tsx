@@ -28,7 +28,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           width: 100% !important;
           color: #ffffff !important;
           border: 1px solid #4b5563 !important;
-
+          background-color: #2a2a2a !important;
           box-sizing: border-box !important;
           height: 42px !important;
       }
@@ -44,6 +44,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           border: none !important;
           height: 38px !important;
           margin: auto 0 auto 2px !important;
+          background-color: #2a2a2a !important;
       }
 
       .search-emoji {
@@ -61,7 +62,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
       .search,
       .react-tel-input .flag-dropdown.open .selected-flag,
       .react-tel-input .selected-flag:hover {
-          background: #364153 !important;
+          background: #2a2a2a !important;
       }
 
 
@@ -273,7 +274,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   return (
     <>
       <style>{customPhoneStyles}</style>
-      <div className="max-w-md w-full space-y-8 bg-gray-800 bg-opacity-80 backdrop-blur-lg p-8 rounded-xl shadow-2xl">
+      <div className="max-w-md w-full space-y-8 bg-[#1e1e1e] bg-opacity-80 backdrop-blur-lg p-8 rounded-xl shadow-2xl">
         <div className="flex justify-center">
           <Image
             src="/Profit-365-logo.png"
@@ -287,7 +288,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           Join Our Community
         </h2>
         <p className="text-center text-sm text-gray-400">
-          Sign up for our FREE private broadcast to get free trading insights
+          Sign up for our FREE private broadcast to get free trading Signals
           via WhatsApp or Telegram
         </p>
         {error && (
@@ -306,7 +307,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 id="preferredName"
                 name="preferredName"
                 type="text"
-                className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="mt-1 block w-full px-3 py-2 bg-[#2a2a2a] border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 placeholder="Enter your preferred name"
                 value={formData.preferredName}
                 onChange={handleChange}
@@ -324,7 +325,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 name="email"
                 type="email"
                 required
-                className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="mt-1 block w-full px-3 py-2 bg-[#2a2a2a] border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
@@ -409,7 +410,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                   id="telegramId"
                   name="telegramId"
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="mt-1 block w-full px-3 py-2 bg-[#2a2a2a] border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="@youruserId"
                   value={formData.telegramId}
                   onChange={handleChange}
