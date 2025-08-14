@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, ReactNode } from "react";
 import Image from "next/image";
 import { FaWhatsapp, FaTelegram } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -133,7 +133,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   ] as string[];
 
   const [formData, setFormData] = useState(initialFormData);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | ReactNode | null>(null);
   const [emailSuggestion, setEmailSuggestion] = useState<{
     suggestionStr: string;
     suggestedMail: string;
@@ -216,11 +216,11 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
       return;
     }
 
-    if (formData.preferences.includes("telegram") && !formData.telegramId) {
-      setError("Telegram ID is required when Telegram is selected.");
-      setLoading(false);
-      return;
-    }
+    // if (formData.preferences.includes("telegram") && !formData.telegramId) {
+    //   setError("Telegram ID is required when Telegram is selected.");
+    //   setLoading(false);
+    //   return;
+    // }
 
     // Determine channelPreference
     let channelPreference: "whatsapp" | "telegram" | "both";
@@ -260,6 +260,26 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
+        if (
+          err.response?.data?.message ===
+          "A user with this email or phone number already exists. Please sign in to manage your subscription."
+        ) {
+          //Here I have To Render Error With Link TO Sign in
+          setError(
+            <span>
+              A user with this email or phone number already exists.{" "}
+              <a
+                href="https://app.profit365.com/sign-in"
+                className="text-white underline hover:text-emerald-400"
+                target="_blank"
+              >
+                Sign in
+              </a>{" "}
+              to your dashboard.
+            </span>
+          );
+          return;
+        }
         setError(
           err.response?.data?.message || "An error occurred. Please try again."
         );
@@ -288,7 +308,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
           Join Our Community
         </h2>
         <p className="text-center text-sm text-gray-400">
-          Sign up for our FREE private broadcast to get free trading Signals
+          Sign up for our FREE private broadcast to get free trading insights
           via WhatsApp or Telegram
         </p>
         {error && (
@@ -398,7 +418,8 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 </label>
               </div>
             </div>
-            {formData.preferences.includes("telegram") && (
+
+            {/* {formData.preferences.includes("telegram") && (
               <div>
                 <label
                   htmlFor="telegramId"
@@ -428,7 +449,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                   </a>
                 </p>
               </div>
-            )}
+            )} */}
           </div>
           <div>
             <button
