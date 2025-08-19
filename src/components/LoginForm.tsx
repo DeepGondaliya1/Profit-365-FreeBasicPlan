@@ -142,6 +142,10 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
   const [loading, setLoading] = useState(false);
 
   const validateEmailTypo = async () => {
+    if (!formData.email) {
+      setEmailSuggestion(null);
+      return;
+    }
     const suggestion = await new Promise<string | null>((resolve) => {
       Mailcheck.run({
         email: formData.email,
@@ -187,7 +191,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
 
-    if (type === "email") {
+    if (type === "email" && value) {
       if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
 
       debounceTimeout.current = setTimeout(() => {
@@ -203,8 +207,8 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
     setSuccessPreferences([]);
 
     // Validate required fields
-    if (!formData.email || !formData.whatsappNumber) {
-      setError("Please fill in all required fields.");
+    if (!formData.whatsappNumber) {
+      setError("Please provide a WhatsApp number.");
       setLoading(false);
       return;
     }
@@ -244,7 +248,7 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/subscriptions/free-plan-signup`,
         {
           preferredName: formData.preferredName,
-          email: formData.email,
+          email: formData.email || '',
           phoneNumber: formData.whatsappNumber,
           channelPreference,
           telegramId:
@@ -338,13 +342,12 @@ export default function LoginForm({ setSuccessPreferences }: LoginFormProps) {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-300"
               >
-                Email Address
+                Email Address (Optional)
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
-                required
                 className="mt-1 block w-full px-3 py-2 bg-[#2a2a2a] border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 placeholder="Enter your email"
                 value={formData.email}
