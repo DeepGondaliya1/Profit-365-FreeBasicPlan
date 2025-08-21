@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import LoginForm from "@/components/LoginForm";
-import SuccessMessage from "@/components/SuccessMessage";
+// import LoginForm from "@/components/LoginForm";
+// import SuccessMessage from "@/components/SuccessMessage";
 import LoginStep from "@/components/LoginStep";
 
 export default function Home() {
@@ -31,6 +31,8 @@ export default function Home() {
     //     <SuccessMessage preferences={successPreferences} />
     //   </div>
     // </div>
-    <LoginStep />
+    <div className="min-h-screen relative flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 gap-3">
+      <LoginStep />
+    </div>
   );
 }

@@ -43,7 +43,7 @@ export default function LoginStep() {
                     </a>
                 </div>
                 <p className="text-sm text-gray-400 mb-4">
-                    Sign up for our FREE private broadcast to get free trading insights via WhatsApp or Telegram
+                    Sign up for our FREE private broadcast to get free trading signals via WhatsApp or Telegram
                 </p>
                 <p className="text-sm text-gray-400 mb-4">
                     Save <span className="text-green-400 font-bold">+1 365-9989-385</span> in your contact list to receive our broadcast messages OR click below to save instantly.
