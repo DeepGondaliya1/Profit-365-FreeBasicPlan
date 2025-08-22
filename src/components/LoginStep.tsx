@@ -29,7 +29,7 @@ export default function LoginStep() {
                 </div>
                 <h2 className="text-3xl font-semibold text-white mb-4">Join Our Community</h2>
                 <h3 className="text-2xl font-bold text-white mb-4">Step 1</h3>
-                <div className="mb-4">
+                <div className="mb-4 flex items-center justify-center gap-2">
                     <span className="text-white text-sm font-medium">
                         Already have an account?{" "}
                     </span>
@@ -37,22 +37,67 @@ export default function LoginStep() {
                         href="https://app.p365marketeducation.com/signin"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center py-1 px-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors duration-200"
                     >
-                        Log In
+                        <button
+                            className="cursor-pointer relative inline-flex items-center justify-center rounded-[999px] text-white w-[90px] h-[30px] px-2 overflow-hidden before:absolute before:inset-0 before:rounded-full before:border before:border-white/30 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 before:pointer-events-none"
+                            style={
+                                {
+                                    "--spread": "90deg",
+                                    "--shimmer-color": "#ffffff",
+                                    "--radius": "999px",
+                                    "--speed": "2s",
+                                    "--cut": "1px",
+                                    "--bg": "linear-gradient(207deg, rgb(255, 90, 0) 20%, rgb(11, 20, 26) 100%)", // Matching orange-600
+                                } as React.CSSProperties
+                            }
+                        >
+                            {/* ROTATING BORDER BACKGROUND */}
+                            <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
+                                <div className="absolute inset-[-100%] rotate-gradient">
+                                    <div className="absolute inset-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            {/* BG layer inside the cut area */}
+                            <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)] z-0"></div>
+
+                            {/* CONTENT */}
+                            <span className="z-10 text-sm h-max mb-1 p-0">Log In</span>
+                        </button>
                     </a>
                 </div>
                 <p className="text-sm text-gray-400 mb-4">
-                    Sign up for our FREE private broadcast to get free trading signals via WhatsApp or Telegram
+                    Sign up for our FREE private broadcast to get free market insights via WhatsApp or Telegram
                 </p>
                 <p className="text-sm text-gray-400 mb-4">
-                    Save <span className="text-green-400 font-bold">+1 365-9989-385</span> in your contact list to receive our broadcast messages OR click below to save instantly.
+                    Save <span className="text-green-400 font-bold">+1 (365) 998-9385</span> in your contact list to receive our broadcast messages OR click below to save instantly.
                 </p>
                 <button
                     onClick={handleDownload}
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+                    className="cursor-pointer relative flex items-center justify-center rounded-[999px] text-white w-full py-2 px-4 overflow-hidden before:absolute before:inset-0 before:rounded-full before:border before:border-white/30 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 before:pointer-events-none"
+                    style={
+                        {
+                            "--spread": "90deg",
+                            "--shimmer-color": "#ffffff",
+                            "--radius": "999px",
+                            "--speed": "2s",
+                            "--cut": "1px",
+                            "--bg": "linear-gradient(207deg, rgb(16, 185, 129) 20%, rgb(11, 20, 26) 100%)", // Matching green-500
+                        } as React.CSSProperties
+                    }
                 >
-                    Click Me to Import Contact
+                    {/* ROTATING BORDER BACKGROUND */}
+                    <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
+                        <div className="absolute inset-[-100%] rotate-gradient">
+                            <div className="absolute inset-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] rounded-full"></div>
+                        </div>
+                    </div>
+
+                    {/* BG layer inside the cut area */}
+                    <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)] z-0"></div>
+
+                    {/* CONTENT */}
+                    <span className="z-10 text-sm font-medium">Click Me to Import Contact</span>
                 </button>
             </div>
 
@@ -67,17 +112,65 @@ export default function LoginStep() {
                         href="https://wa.me/+13659989385/?text=Hello. I would like to join your Free broadcast."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
                     >
-                        Join WhatsApp
+                        <button
+                            className="cursor-pointer relative flex items-center justify-center rounded-[999px] text-white w-full   py-2 px-4 overflow-hidden before:absolute before:inset-0 before:rounded-full before:border before:border-white/30 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 before:pointer-events-none"
+                            style={
+                                {
+                                    "--spread": "90deg",
+                                    "--shimmer-color": "#ffffff",
+                                    "--radius": "999px",
+                                    "--speed": "2s",
+                                    "--cut": "1px",
+                                    "--bg": "linear-gradient(207deg, rgb(16, 185, 129) 20%, rgb(11, 20, 26) 100%)", // Matching green-500
+                                } as React.CSSProperties
+                            }
+                        >
+                            {/* ROTATING BORDER BACKGROUND */}
+                            <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
+                                <div className="absolute inset-[-100%] rotate-gradient">
+                                    <div className="absolute inset-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            {/* BG layer inside the cut area */}
+                            <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)] z-0"></div>
+
+                            {/* CONTENT */}
+                            <span className="z-10 text-sm font-medium">Join WhatsApp</span>
+                        </button>
                     </a>
                     <a
                         href="https://t.me/p365education_bot"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                     >
-                        Join Telegram
+                        <button
+                            className="cursor-pointer relative flex items-center justify-center rounded-[999px] text-white w-full  py-2 px-4 overflow-hidden before:absolute before:inset-0 before:rounded-full before:border before:border-white/30 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 before:pointer-events-none"
+                            style={
+                                {
+                                    "--spread": "90deg",
+                                    "--shimmer-color": "#ffffff",
+                                    "--radius": "999px",
+                                    "--speed": "2s",
+                                    "--cut": "1px",
+                                    "--bg": "linear-gradient(207deg, rgb(59, 130, 246) 20%, rgb(11, 20, 26) 100%)", // Matching blue-500
+                                } as React.CSSProperties
+                            }
+                        >
+                            {/* ROTATING BORDER BACKGROUND */}
+                            <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
+                                <div className="absolute inset-[-100%] rotate-gradient">
+                                    <div className="absolute inset-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            {/* BG layer inside the cut area */}
+                            <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)] z-0"></div>
+
+                            {/* CONTENT */}
+                            <span className="z-10 text-sm font-medium">Join Telegram</span>
+                        </button>
                     </a>
                 </div>
             </div>
