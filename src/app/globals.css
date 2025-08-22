@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #171c24; /* Black background */
+  --background: #171c24;
+  /* Black background */
   --foreground: #ededed;
 }
 
@@ -37,17 +38,24 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: url('https://telegram.org/img/tgme/pattern.svg?1');
-  background-size: auto; 
+  background-size: auto;
   background-repeat: repeat;
   background-position: 0 0;
   background-attachment: fixed;
-  
+
   /* Invert colors: white background becomes black, black icons become white */
   filter: invert(1);
-  
+
   /* Adjust opacity to make it subtle and ensure text readability */
   opacity: 0.2;
-  
+
   pointer-events: none;
   z-index: -1;
+}
+
+
+.rotate-gradient {
+  animation: spin 4s linear infinite;
+  animation-timing-function: linear;
+  /* Ensure constant speed */
 }
